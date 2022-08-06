@@ -464,7 +464,7 @@ class MAT(nn.Module):
                 loss_pack = self.train_batch(x, y)
                 with torch.no_grad():
                     Xaug, index = self.AG.agda(x, loss_pack['attention_maps'])
-                loss_pack2 = self.train_batch(Xaug, y)
+                    loss_pack2 = self.train_batch(Xaug, y)
                 loss_pack['AGDA_ensemble_loss'] = loss_pack2['ensemble_loss']
                 loss_pack['AGDA_aux_loss'] = loss_pack2['aux_loss']
                 one_hot = F.one_hot(index, self.M)
